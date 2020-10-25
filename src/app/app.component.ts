@@ -22,15 +22,14 @@ export class AppComponent {
 
     startSpel(){
         this.beurten = 10;
-        this.gokgetalString= ''; 
+        this.gokgetalNumber= null; 
         this.randomNumber = Math.floor(Math.random()*100);
         this.gokBoodschap= '';
-        this.controle= 0;
-        this.controleNummer= 0
+        this.controle= null;
+        this.controleNummer= null
     }
 
     valideerGok(gokgetalNumber){
-            gokgetalNumber = +this.gokgetalString; 
             this.gokBoodschap= 'Kies een ander getal';
             if (gokgetalNumber <= -1 || gokgetalNumber > 100) {
             return this.gokBoodschap}
@@ -39,10 +38,6 @@ export class AppComponent {
     nummerControle() {
           this.controle = this.randomNumber - this.gokgetalNumber;
           this.beurten = this.beurten - 1 ;
-        }
-
-      groterDan(gokgetalNumber, controleNummer) {
-          return gokgetalNumber < controleNummer;
         }
   }
  

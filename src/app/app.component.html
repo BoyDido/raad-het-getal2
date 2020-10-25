@@ -9,18 +9,18 @@
           <p>'Het gokcomponent'</p>
           <h2>Raad een getal tussen 1 en 100.</h2>
               <h4><i>Je nieuwe gok.</i></h4>
-              <input type="text" [(ngModel)]="gokgetalString"> 
+              <input type="number" [value]="gokgetalNumber" (input)="gokgetalNumber = $event.target.value" [ngmodel] = "gokgetalNumber" >
               <button (click)="nummerControle()" class="btn btn-primary"><strong>GOK</strong></button>
-              <h6>Je nieuwe gok is {{gokgetalString}}</h6>
+              <h6>Je nieuwe gok is {{gokgetalNumber}}</h6>
               <div>
-                <h4 *ngIf="groterDan(gokgetalNumber, controleNummer)">Kies een lager nummer</h4>
-                <h4 *ngIf="controle>0">Kies een hoger nummer</h4>
-                <h4 *ngIf="controle===0">Goed gegokt!</h4> 
+                <p *ngIf="controle<0">Kies een lager nummer</p>
+                <p *ngIf="controle>0">Kies een hoger nummer</p>
+                <p *ngIf="controle===0">Goed gegokt!</p> 
               </div>
              
-              <p *ngIf="valideerGok(gokgetalString)">{{gokBoodschap}}</p>
+              <p *ngIf="valideerGok(gokgetalNumber)">{{gokBoodschap}}</p>
               <h4>Nog {{beurten}} beurten resterend.</h4>
-              <h5>{{randomNumber}}</h5>
+
       </div> 
   </div>
 </div>
