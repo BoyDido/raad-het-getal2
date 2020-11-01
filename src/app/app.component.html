@@ -1,16 +1,12 @@
-<div class="container">
-  <h1>Raad het getal</h1> 
+<mat-card class="card">
+<mat-card-title><h1>Raad het getal</h1></mat-card-title>
 
-</div>
-
-<div class="container">
-  <div class="row">
-      <div class="col-xs-12">
+  <mat-card-content>
           <p>'Het gokcomponent'</p>
           <h2>Raad een getal tussen 1 en 100.</h2>
               <h4><i>Je nieuwe gok.</i></h4>
-              <input type="number" [value]="gokgetalNumber" (input)="gokgetalNumber = $event.target.value" [ngmodel] = "gokgetalNumber" >
-              <button (click)="nummerControle()" class="btn btn-primary"><strong>GOK</strong></button>
+              <input type="number" color=ThemePalette [value]="gokgetalNumber" (input)="gokgetalNumber = $event.target.value" [ngModel] = "gokgetalNumber" >
+   
               <h6>Je nieuwe gok is {{gokgetalNumber}}</h6>
               <div>
                 <p *ngIf="controle<0">Kies een lager nummer</p>
@@ -18,11 +14,18 @@
                 <p *ngIf="controle===0">Goed gegokt!</p> 
               </div>
              
-              <p *ngIf="valideerGok(gokgetalNumber)">{{gokBoodschap}}</p>
+              <mat-progress-bar
+              class="slider"
+              color= "accent"
+              [mode]="determinate"
+              [value]="progressbarBeurten">
+              </mat-progress-bar>             
+           <p *ngIf="valideerGok(gokgetalNumber)">{{gokBoodschap}}</p>
               <h4>Nog {{beurten}} beurten resterend.</h4>
 
-      </div> 
-  </div>
-</div>
-
+              <mat-card-actions>             
+                <button mat-raised-button  color="accent" (click)="nummerControle()" ><strong>GOK</strong></button>
+             </mat-card-actions>
+  </mat-card-content>
+</mat-card>
 

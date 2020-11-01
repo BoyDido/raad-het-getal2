@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,8 @@ export class AppComponent {
       beurten: number;
       controle: number;
       gokgetalNumber:number;
-      controleNummer: number
+      controleNummer: number;
+      progressbarBeurten: number;
 
       constructor(){
       this.gokBoodschap = this.gokBoodschap;
@@ -22,6 +23,7 @@ export class AppComponent {
 
     startSpel(){
         this.beurten = 10;
+        this.progressbarBeurten = 100;
         this.gokgetalNumber= null; 
         this.randomNumber = Math.floor(Math.random()*100);
         this.gokBoodschap= '';
@@ -38,6 +40,7 @@ export class AppComponent {
     nummerControle() {
           this.controle = this.randomNumber - this.gokgetalNumber;
           this.beurten = this.beurten - 1 ;
+          this.progressbarBeurten = this.beurten*10;
         }
   }
  
